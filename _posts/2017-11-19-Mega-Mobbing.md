@@ -8,6 +8,8 @@ The expected disadvantages were there, of course. In a mob we want everyone to s
 
 We used a 3-minute rotation time. We were able to get everyone on the keyboard once.
 
-Normally in these classes we guide people into a problem and then let them get stuck and think about how they might get out. We want someone in the mob to come up with the answer, but even if that doesn't happen, the moments of confusion and uncertainty helps open people up to new ideas. One thing that was different this time is that there was almost always someone with an idea. We instructors didn't have to feed answers very often at all.
+Normally in these classes we guide people into a problem and then let them get stuck and think about how they might get out. We want someone in the mob to come up with the answer, but even if that doesn't happen, the moments of confusion and uncertainty helps open people up to new ideas. One thing that was different this time is that there was almost always someone with an idea. We instructors didn't have to feed answers very often at all. That was pretty cool.
 
-For newbies to Mob Programming we structure things with a 
+In these classes we structure the mob with a typist (driver) at the keyboard, a single coder (navigator) deciding what to do next, along with the rest of the mob offering up ideas for the coder to consider. 
+
+I like people to come away from these classes ready to use mob programming in their teams. I don't think they got much of that.
