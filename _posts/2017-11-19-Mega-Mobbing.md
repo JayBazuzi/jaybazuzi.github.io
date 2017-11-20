@@ -1,6 +1,6 @@
 This week we ran a #mobprogramming session with 38 people. Here are some notes about how that went:
 
-At Tableau everyone in the Dev Team gets training in Arlo Belshee's _Read-by-Refactoring_. It's an experiential class, where the attendees are invited to work on a familiar problem (Reading gnarly, untested legacy code) while the instructors coach them into discovering new patterns of thinking. Since our goal is first to change how programmers' fingers work, mobbing is far more effective than a lecture.
+At Tableau everyone in the Dev Team gets training in Arlo Belshee's _Read-by-Refactoring_. It's an experiential class, where the attendees are invited to work on a common problem (reading gnarly, untested legacy code) while the instructors coach them into discovering new patterns of thinking. Since our goal is first to change how programmers' fingers work, mobbing is far more effective than a lecture.
 
 Normally we aim for mobs around 8 people, and think of 10 as a maximum, but due to scheduling and other factors we ended up with 35 attendees and 3 facilitators. Time to make the best of it.
 
