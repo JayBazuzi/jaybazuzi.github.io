@@ -181,10 +181,8 @@ i.e.:
 
 ```
 namespace {
-
- auto Applesauce(Foo& foo, Bar*& bar) -> void {
-
-// ...
- };
+   auto Applesauce(Foo& foo, Bar*& bar) -> void {
+      // ...
+   };
 }
 ```
