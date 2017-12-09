@@ -85,7 +85,7 @@ auto Applesauce = [&]() -> SOMETYPE {
 Compile to make sure you got the return type correct.
 
 ## 4. Capture explicitly
-====
+
 *Replace* `[&]` with `[this]` (or `[]` in a free function) and compile.
 
 *For each error* about a variable that must be captured:
