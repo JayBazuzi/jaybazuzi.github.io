@@ -19,8 +19,7 @@ With that in mind, I offer this recipe for C++ Extract Method. Follow the recipe
 
 Thanks to Llewellyn Falco and Arlo Belshee who said the right things at the right time to make this recipe pop in to existence, and my coworkers at Tableau Software for filling in a bunch of details. They deserve 99% of the credit.
 
-The recipe.
-====
+# The recipe.
 
 If you get to the end of step 1, the refactoring is possible - it will produce a valid result.
 
@@ -32,16 +31,7 @@ Each step is a safe micro-refactoring. You can check in at the end of each step.
 
 The underlying principle is Tennent's Correspondence Principle.
 
-
-
-
-
-
-
-
-
-1. Introduce a lambda
-====
+## 1. Introduce a lambda
 
 Surround the block in question with:
 
@@ -59,8 +49,7 @@ If you haven't seen this syntax before, check out the C++ lambda docs.
 
 *Check the new lambda for any return statements*. If there are any returns and it's obvious that all code paths return, then add a return statement. If there are any returns and it's not obvious that all code paths return, then back up and either Eliminate Early Return/Continue/Break or try extracting something different.
 
-2. Introduce Variable on the lambda
-====
+## 2. Introduce Variable on the lambda
 
 i.e.
 ```
@@ -82,8 +71,8 @@ It's not important to pick a good name, but it is important to pick a name that 
 
 Compile to make sure you didn't tyop.
 
-3. Set the return type
-====
+## 3. Set the return type
+
 Set the return type on the lambda (even if it's `void`). In Visual Studio, the tooltip over `auto` will tell you the type.
 
 i.e.:
@@ -95,7 +84,7 @@ auto Applesauce = [&]() -> SOMETYPE {
 
 Compile to make sure you got the return type correct.
 
-4. Capture explicitly
+## 4. Capture explicitly
 ====
 *Replace* `[&]` with `[this]` (or `[]` in a free function) and compile.
 
@@ -113,8 +102,8 @@ auto Applesauce = [this, &foo]() -> void {
 
 The order of the capture list will influence the order of the parameters of the final function. If you want the parameters in a particular order, now is a good time to reorder the capture list.
 
-5. Convert captures to parameters
-====
+## 5. Convert captures to parameters
+
 
 *For each captur*ed local variable (except `this`)
 - Go to the definition of the variable
@@ -153,20 +142,20 @@ becomes
 
 Note: even pointers must be passed by reference.
 
-6. Try to eliminate `this` capture
-====
+## 6. Try to eliminate `this` capture
+
 
 - Remove `this` from the capture list
 - Compile
 If the compile fails, undo
 
-7. Convert lambda to function
-===
+##7. Convert lambda to function
+
 If `this` is captured, use 7A.
 If `this` is not captured, use 7B.
 
-7A. Convert this-bound lambda to member function
----
+### 7A. Convert this-bound lambda to member function
+
 - Cut the lambda statement and paste it outside the current function
 - Remove `= [this]`
 - Copy the signature line
@@ -180,8 +169,8 @@ auto SomeClass::Applesauce(Foo& foo, Bar*& bar) -> void {
 };
 ```
 
-7B. Convert non-this Lambda to free function
----
+### 7B. Convert non-this Lambda to free function
+
 - Cut the lambda statement and paste it above the current function.
 - Remove `= []`
 - Wrap it in an unnamed namespace
