@@ -29,7 +29,7 @@ Look for something you can do in about an hour. This makes it easy to justify th
 For serious problems, Safeguard repeatedly.
 ====
 
-If production was down for a day, it's worth spending more than an hour of your time to make sure that doesn't happen again. But don't spend a week rewriting a subsystem. Instead do a series of quick and light safeguards, even if you do them for a whole week. 
+If production was down for a day, it's worth spending more than an hour of your time to make sure that doesn't happen again. But don't spend a week rewriting a subsystem. Instead do a series of quick and light safeguards. Do as many as is justified by the severity of the problem.
 
 An example would be useful right now.
 ====
