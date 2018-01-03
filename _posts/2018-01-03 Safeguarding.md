@@ -42,3 +42,5 @@ Some examples
 | Add a story to the backlog to refactor some gnarly code. | No. | 
 | Factor 1 responsibility out of some gnarly code. | Yes. |
 | Around the code where you're fixing a bug, rename 1 local variable. | Yes. |
+| Add a static analysis check for a construct that led to a bug. | Yes. |
+
