@@ -34,9 +34,9 @@ If production was down for a day, it's worth spending more than an hour of your 
 Some examples
 ====
 
-| Idea | Is this safeguarding? | Why? |
-|-|-|-|
-| Add a test when fixing a bug | No. |
+| Idea | Is this safeguarding? |
+|------|-----------------------|
+| Add a test when fixing a bug. | No. |
 | Find a second instance of a bug you're fixing. Merge duplicate code. Add a test. | Yes. |
 | Convert integration tests to unit tests. | Yes. |
 | Add a story to the backlog to refactor some gnarly code. | No. | 
