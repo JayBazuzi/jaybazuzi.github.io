@@ -8,7 +8,7 @@ At Tableau we use the term "Safeguarding" to describe a particular way of reduci
 Safeguard after you address a problem.
 ===
 
-If production goes down, bring it up first. If you find a bug, fix it first. 
+If production goes down, get production up again. If you find a bug, fix the bug. Then move on to safeguarding.
 
 Safeguard as soon as the fire is out / the bleeding has stopped. Safeguard before returning to other, non-emergency tasks.
 
@@ -17,7 +17,7 @@ Safeguard the genus.
 
 If you fix a bug, the software is better for your users, but it is not safer for developers to work in. Even adding a test for the exact defect you're fixing is not good enough; we'll never cover them all that way. Look deeper. Learn something about the underlying causes. 
 
-What made it possible to create this problem? What factors led to this happening? Was something confusing to us? Have we created this kind of problem before, and what is the commonality? 
+What made it possible to create this problem? What factors led to this happening? Was something confusing to us? Have we created this kind of problem before, and what is the commonality?
 
 Safeguarding is quick and lightweight.
 ===
@@ -43,7 +43,10 @@ An example would be useful right now.
 | Factor 1 responsibility out of some gnarly code. | Yes. |
 | Around the code where you're fixing a bug, rename 1 local variable. | Yes. |
 | Add a static analysis check for a construct that led to a bug. | Yes. |
-| Tell other developers not to make the same kind of mistake. | No. |
+| Admonish developers to remember that a VIN / Windows file name / user name is case-insenstive. | No. |
+| Create class with an Equals override for a VIN / Windows file name / user name. | Yes. |
+| Create class with an Equals override for every bare string in your system, all at once. | No. |
+
 
 Is this the Camp Site Rule?
 ====
@@ -56,3 +59,12 @@ Is this Refactoring?
 Some safeguarding is refactoring. Some is testing. Some is tooling. 
 
 It's not education, which puts a burden on developers. 
+
+Is this Root Cause Analysis?
+====
+
+Safeguarding includes analysis of underlying causes, although the word "root" implies a singleton. Software systems are complex, and casues intertwine. 
+
+I often see attempts at RCA that are too shallow, such as "we've found the line of code that brought the site down." Safeguarding is deeper than that; deep enough to address a genus.
+
+At the same time, Safeguarding can be *less* deep than RCA. It need only go deep enough to reduce the genus by 15%. Next time you come around, it will be easier to go a little deeper.
