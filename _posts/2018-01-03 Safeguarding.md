@@ -36,9 +36,9 @@ Some examples
 
 | Idea | Is this safeguarding? | Why? |
 |-|-|-|
-| Add a test when fixing a bug | No. | Doesn't address the class; doesn't make the system safer. |
-| Find a second instance of a bug you're fixing. Merge duplicate code. Add a test. | Yes. | Detects and fixes a bug no one has seen yet. Reduces duplication. Creates a canoncial home for a business rule. |
-| Convert integration tests to unit tests. | Yes. | Moves detection earlier. | 
-| Add a story to the backlog to refactor some gnarly code. | No. |  |
-| Factor 1 responsibility out of some gnarly code. | Yes. | |
-| Around the code where you're fixing a bug, rename 1 local variable. | Yes. | |
+| Add a test when fixing a bug | No. |
+| Find a second instance of a bug you're fixing. Merge duplicate code. Add a test. | Yes. |
+| Convert integration tests to unit tests. | Yes. |
+| Add a story to the backlog to refactor some gnarly code. | No. | 
+| Factor 1 responsibility out of some gnarly code. | Yes. |
+| Around the code where you're fixing a bug, rename 1 local variable. | Yes. |
