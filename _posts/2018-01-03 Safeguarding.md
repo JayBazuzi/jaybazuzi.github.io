@@ -3,7 +3,7 @@ layout: post
 title: What is Safeguarding? (A definition)
 ---
 
-At Tableau we use the term "Safeguarding" to describe a particular way of reducing future defects by learning from past defects. We're continuing to learn about it, but here's my current understanding:
+At Tableau we use the term "Safeguarding" to describe a particular way of reducing future defects by learning from past defects. Here's my current understanding:
 
 Safeguard after you address a problem.
 ===
@@ -42,4 +42,3 @@ Some examples
 | Add a story to the backlog to refactor some gnarly code. | No. |  |
 | Factor 1 responsibility out of some gnarly code. | Yes. | |
 | Around the code where you're fixing a bug, rename 1 local variable. | Yes. | |
-
