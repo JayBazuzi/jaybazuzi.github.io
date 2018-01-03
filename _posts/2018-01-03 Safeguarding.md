@@ -35,7 +35,7 @@ Some examples
 ====
 
 | Idea | Is this safeguarding? | Why? |
----------------------------------------
+|-|-|-|
 | Add a test when fixing a bug | No. | Doesn't address the class; doesn't make the system safer. |
 | Find a second instance of a bug you're fixing. Merge duplicate code. Add a test. | Yes. | Detects and fixes a bug no one has seen yet. Reduces duplication. Creates a canoncial home for a business rule. |
 | Convert integration tests to unit tests. | Yes. | Moves detection earlier. | 
