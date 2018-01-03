@@ -68,3 +68,7 @@ Safeguarding includes analysis of underlying causes, although the word "root" im
 I often see attempts at RCA that are too shallow, such as "we've found the line of code that brought the site down." Safeguarding is deeper than that; deep enough to address a genus.
 
 At the same time, Safeguarding can be *less* deep than RCA. It need only go deep enough to reduce the genus by 15%. The next time you have a problem in this area, it will be easier for safeguarding to go a little deeper.
+
+Thanks
+====
+Thanks to a bunch of folks at Tableau who did a lot of thinking about Safeguarding, and Steve Meredith and Evan Bailey who reviewed drafts of this article.
