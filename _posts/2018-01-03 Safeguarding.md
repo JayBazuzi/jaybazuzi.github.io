@@ -31,7 +31,7 @@ For serious problems, Safeguard repeatedly.
 
 If production was down for a day, it's worth spending more than an hour of your time to make sure that doesn't happen again. But don't spend a week rewriting a subsystem. Instead do a series of quick and light safeguards, even if you do them for a whole week. 
 
-Some examples
+An example would be useful right now.
 ====
 
 | Idea | Is this safeguarding? |
@@ -48,7 +48,7 @@ Some examples
 Is this the Camp Site Rule?
 ====
 
-Safeguarding is closely related to the Camp Site Rule, aka the Scouting Rule, "Always leave the campground cleaner than you found it.", but applies to a more specific context (when addressing a problem) and is a more constrained action (15% reduction of the genus).
+Safeguarding is closely related to the Camp Site Rule, aka the Scouting Rule, "Always leave the campground cleaner than you found it.", but applies to a more specific context (in response to a problem) and is a more constrained action (15% reduction of the genus).
 
 Is this Refactoring?
 ====
