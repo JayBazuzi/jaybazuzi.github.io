@@ -44,8 +44,8 @@ An example would be useful right now.
 | Around the code where you're fixing a bug, rename 1 local variable. | Yes. |
 | Add a static analysis check for a construct that led to a bug. | Yes. |
 | Admonish developers to remember that a VIN / Windows file name / user name is case-insenstive. | No. |
-| Create class with an Equals override for a VIN / Windows file name / user name. | Yes. |
-| Create class with an Equals override for every bare string in your system, all at once. | No. |
+| Create a class with an Equals override for a VIN / Windows file name / user name. | Yes. |
+| Create classes with an Equals override for every bare string in your system, all at once. | No. |
 
 
 Is this the Camp Site Rule?
