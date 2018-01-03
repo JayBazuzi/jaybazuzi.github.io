@@ -15,7 +15,7 @@ Safeguard as soon as the fire is out / the bleeding has stopped. Safeguard befor
 Safeguard the genus.
 ===
 
-If you fix a bug, the software is better for your users, but it is not safer for developers to work in. Even adding a test for the exact defect you're fixing is not good enough; we'll never cover them all that way. Look deeper. Learn something about the underlying causes. 
+If you fix a bug, the software is better for your users, but it is not safer for developers to work in. Even adding a test for the exact defect you're fixing is not good enough; you'll just keep having new defects that you don't have tests for. Look deeper. Learn something about the underlying causes. 
 
 What made it possible to create this problem? What factors led to this happening? Was something confusing to us? Have we created this kind of problem before, and what is the commonality?
 
@@ -24,7 +24,7 @@ Safeguarding is quick and lightweight.
 
 Now that you've identified a deep underlying cause for a broad genus of problems, don't fix the whole genus at once. Find one thing you can do to make things a little bit better. If you can reduce the size of the genus by 15%, that's about right. 
 
-Look for something you can do in about an hour. This makes it easy to justify the cost. You'll capture the value of your efforts quickly. If your idea doesn't pan out, you haven't lost much. If you get interrupted during the 3rd hour, you'll still have two safeguards completed.
+Look for things that each take about an hour. This makes it easy to justify the cost. You'll capture the value of your efforts quickly. If your idea doesn't pan out, you haven't lost much. If you get interrupted during the 3rd hour, you'll still have two safeguards completed.
 
 For serious problems, Safeguard repeatedly.
 ====
@@ -58,13 +58,13 @@ Is this Refactoring?
 
 Some safeguarding is refactoring. Some is testing. Some is tooling. 
 
-It's not education, which puts a burden on developers. 
+Safeguarding is not education, which puts a burden on developers. 
 
 Is this Root Cause Analysis?
 ====
 
-Safeguarding includes analysis of underlying causes, although the word "root" implies a singleton. Software systems are complex, and casues intertwine. 
+Safeguarding includes analysis of underlying causes, although the word "root" implies a single cause. Software systems are complex, and casues intertwine. 
 
 I often see attempts at RCA that are too shallow, such as "we've found the line of code that brought the site down." Safeguarding is deeper than that; deep enough to address a genus.
 
-At the same time, Safeguarding can be *less* deep than RCA. It need only go deep enough to reduce the genus by 15%. Next time you come around, it will be easier to go a little deeper.
+At the same time, Safeguarding can be *less* deep than RCA. It need only go deep enough to reduce the genus by 15%. The next time you have a problem in this area, it will be easier for safeguarding to go a little deeper.
