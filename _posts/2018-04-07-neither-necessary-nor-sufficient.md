@@ -16,11 +16,11 @@ My second claim (not sufficient) is why this article matters. Because if tests a
 
 To "refactor" is to change the internal structure of code without changing its external behavior. 
 
-"Refactor safely" is redundant. I say "refactor safely" to differentiate from "I made a bunch of changes to the structure of the code, and the new structure will serve us better, and if I introduced any bugs, they'll be much easier to fix in this new structure." Introducing a bug a a change in external behavior, so it's not refactoring. This is "editing". "Refactor safely" means that you can be certain that you haven't changed the behavior.
+"Refactor safely" is redundant. I say "refactor safely" to differentiate from "I made a bunch of changes to the structure of the code, and the code is much cleaner now, and if I introduced any bugs, they'll be much easier to fix in this new structure." Introducing a bug a a change in external behavior, so it's not refactoring. This is "editing". "Refactor safely" means that you can be certain that you haven't changed the behavior.
 
 When people talk about the "tests" they want in place for refactoring, they usually mean automated tests, often unit tests. That's fine. You can include manual testing in there if you want. No matter.
 
-# A parable.
+# An API parable.
 
 Suppose you're writing a customer-facing API. Maybe you work on Windows at Microsoft, and the new API is for augmented reality. Or maybe the API lets enterprises more closely monitor the desktops deployed throughout their organization. Whatever.
 
@@ -36,7 +36,9 @@ Why didn't your tests catch this? You were so diligent in writing them. You care
 
 Here's the thing: we don't write tests for our bugs we don't know about. (We write them for our bug _fixes_, but not for the bugs themselves.)
 
-I used APIs in my example, but this can happen in any software.
+# Any software
+
+I used APIs in my example, but this can happen in any software where backwards compatibilty matters. Which is almost all software.
 
 As programmers, we need a strategy for safely refactoring code that is bug-for-bug compatible, including bugs we don't know about and don't have tests for. Thorough tests don't make refactoring fully safe. 
 
@@ -55,11 +57,12 @@ Here's an example transformation, for Rename Local Variable in C#:
 
 Why do we build the AST twice and compare? Because there are cases where a rename might change how symbols resolve, which would change the meaning of a program. For example, a renaming a local variable `A` -> `B`, when the containing class has a field named `B` will change references to that field into references to the local variable. In some cases, these edge cases are quite subtle, but if we're going to maintain bug-for-bug compatibility, we're going to need to be thorough.
 
-The good news for us is that the C# refactorings in Visual Studio are very fully reliable ([if I do say so myself](https://www.linkedin.com/in/jay-bazuzi-07936414/)). When we first wrote refactorings in Visual C# in the early 2000s, we assumed our users didn't have unit tests (because we didn't), and the only way they would trust our refactorings is if they were held to this standard of correctness. 
+This is a recipe. You can follow it by hand, or you can automate it. These two approaches (tools and recipes) are really the same approach: a provably-correct, behavior-preserving transformation according to the rules of the language as defined in the language spec. A refactoring tool is a recipe written in software.
+
+When we first wrote refactorings in Visual C# in the early 2000s, we assumed our users didn't have unit tests (because we didn't), and the only way they would trust our refactorings is if they were held to this standard of correctness.
 
 There are no automated tools that will extract a method in C++ with complete reliability. Visual C++, ReSharper C++, Visual Assist - they all get it wrong some of the time, and sometimes in very pretty simple cases. That's why [this recipe](http://jay.bazuzi.com/Safely-extract-a-method-in-any-C++-code/) is so important. It will work even in the most dire situations, when the code is so terribly gnarly that no human brain can make sense of it. 
 
-These two approaches (tools and recipes) are really the same approach: a provably-correct, behavior-preserving transformation according to the rules of the language as defined in the language spec. A refactoring tool is a recipe written in software.
 
 # What if tools aren't perfect?
 
