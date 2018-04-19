@@ -75,4 +75,6 @@ No.
 
 You're a programmer, and you edit code all the time, with the risks that entails, and you don't have to give that up. But as I've developed my skills at refactoring over the years, I've found that I can quickly transform code with disciplined refactoring, so I'll use it whenever I can.When the tools are insufficient, I'll edit by hand, and call it out so my pair/mob/reviewer pays careful attention to the change.
 
-TL;DR: tests don't guarantee bug-for-bug compatibility of bugs you don't know about; disciplined refactoring does offer that guarantee.
+#TL;DR:
+
+Tests don't guarantee bug-for-bug compatibility of bugs you don't know about; disciplined refactoring does offer that guarantee.
