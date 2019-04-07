@@ -13,29 +13,23 @@ This is often expedient and may feel safest, where "safety" = not breaking exist
 
 # 1. Doing more than the minimum necessary change.
 
-You could hack in your bug fix or new feature per #0. Maybe that's hard because the code is already convoluted. Or maybe your hack would make the code convoluted. Maybe you live by the Campsite Motto: "Leave it better than you found it." So you clean things up a bit at the same time as the fix or feature.
+You don't want to hack in your bug fix or new feature per #0. Maybe the code is already convoluted, making that work difficult. Or maybe your hack would make the code convoluted. Maybe you live by the Campsite Motto: "Leave it better than you found it." So you clean things up a bit at the same time as the fix or feature.
 
 # 2. Cleaning up code.
 
-You believe that "refactoring" is a different behavior than other coding, so you do it by itself.
+You believe that "refactoring" is a different behavior than other coding activities, so you do it by itself.
 
-This makes it easier for code reviewers / future programmers to understand the change.
+This makes it easier for code reviewers / future programmers to understand the change. 
 
-If you do it in small steps, it's safer and still easier to understand.
+If you do it in small steps, it's even safer and even easier to understand.
 
 If you do it in large steps it sounds like "I've been refactoring all weekend and the code almost compiles again."
 
 # 3. A highly disciplined process of known-safe code transformations.
 
-Hand-editing code to make it "better" avoids the pitfalls of option 0, but it carries the risk of introducing defects. [Even if you have tests, in existing systems there is a risk of breaking unintentional behavior that customers have come to rely on.](http://jay.bazuzi.com/Neither-Necessary-nor-Sufficient/)
-
 Every programming language is a well-defined system of rules; within that system there are behavior-preserving transformations according to those rules.
 
-A human can execute these transformations with very high safety, regardless of tests.
-
 Here's an example for [Extract Function in C++](https://github.com/InnovatingTeams/provable-refactorings/blob/master/recipes/core-6/extract-function/cpp.md).
-
-One of the great things about these recipes is that they're fixable. If I'm hand-editing code and make a mistake, I can tell myself "next time I better watch out for that!", but I'm not reliable that way. If we a recipe has a flaw, we can fix the recipe and it stays fixed.
 
 # 4. Using mechanized refactoring tools.
 
@@ -45,5 +39,5 @@ These are basically the recipes of #3, but executed by a computer. That is faste
 
 Only #3 and #4 are safe enough that I do them without fear.
 
-Some will say that #1 and #2 aren't "true refactoring". That makes sense, but I find that arguing about definitions to be counterproductive and off-putting.
+Some will say that #1 and #2 aren't "true refactoring". I understand why, but I find that arguing about definitions to be counterproductive and off-putting.
 
