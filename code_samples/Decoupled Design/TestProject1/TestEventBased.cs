@@ -18,6 +18,7 @@ public class TestEventBased
     [TestMethod]
     public void TestRaiseEvent()
     {
+        // begin-snippet: event-based-test
         var aClass = new AClass();
         var results = new List<string>();
         aClass.OnBaz += results.Add;
@@ -28,5 +29,6 @@ public class TestEventBased
             "Hello, World!",
             results.Single()
         );
+        // end-snippet
     }
 }

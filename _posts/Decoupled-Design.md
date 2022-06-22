@@ -246,9 +246,11 @@ public static class Program
 <sup><a href='/code_samples/Decoupled Design/Event Based/Program.cs#L11-L35' title='Snippet source file'>snippet source</a> | <a href='#snippet-event-based' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
-We can test `AClass` thusly:
+We can test that `AClass` raises the event at the right time, like this:
 
-```csharp
+<!-- snippet: event-based-test -->
+<a id='snippet-event-based-test'></a>
+```cs
 var aClass = new AClass();
 var results = new List<string>();
 aClass.OnBaz += results.Add;
@@ -258,8 +260,10 @@ aClass.Do();
 Assert.AreEqual(
     "Hello, World!",
     results.Single()
-    );
+);
 ```
+<sup><a href='/code_samples/Decoupled Design/TestProject1/TestEventBased.cs#L21-L32' title='Snippet source file'>snippet source</a> | <a href='#snippet-event-based-test' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
 
 This test is basically accomplishing the same thing as the mock-based test in the previous section, but with an event instead of an interface, and without a mock.
 
