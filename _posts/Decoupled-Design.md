@@ -52,7 +52,7 @@ Program.Main();
 
 Assert.AreEqual("Hello, World!", consoleOutput.ToString());
 ```
-<sup><a href='/code_samples/Decoupled Design/TestProject1/TestAll.cs#L61-L68' title='Snippet source file'>snippet source</a> | <a href='#snippet-end-to-end-test' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/code_samples/Decoupled Design/TestProject1/TestAll.cs#L64-L71' title='Snippet source file'>snippet source</a> | <a href='#snippet-end-to-end-test' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 We're using `Console` here but this approach could work with every external dependency - the file system, HTTP, a database, etc.
@@ -147,7 +147,7 @@ private class FooMock : IFoo
     }
 }
 ```
-<sup><a href='/code_samples/Decoupled Design/TestProject1/TestDependencyInversion.cs#L6-L30' title='Snippet source file'>snippet source</a> | <a href='#snippet-dependency-inversion-test' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/code_samples/Decoupled Design/TestProject1/TestDependencyInversion.cs#L11-L35' title='Snippet source file'>snippet source</a> | <a href='#snippet-dependency-inversion-test' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 I like that this lets me test `AClass` independently.
@@ -168,7 +168,9 @@ A popular adjust to dependency *inversion*, especially in large software systems
 
 Instead of having `Main()` instantiating objects with the correct configuration, we might have something like:
 
-```csharp
+<!-- snippet: dependency-injection-main -->
+<a id='snippet-dependency-injection-main'></a>
+```cs
 public static void Main()
 {
     var services = new Services();
@@ -179,8 +181,10 @@ public static void Main()
     aClass.Do();
 }
 ```
+<sup><a href='/code_samples/Decoupled Design/Dependency Injection/Program.cs#L61-L71' title='Snippet source file'>snippet source</a> | <a href='#snippet-dependency-injection-main' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
 
-`Services` would detect that `AClass` constructor takes an `IFoo` parameter, find one in its collection of services, and pass it to the ctor.
+`Services` would detect that `AClass` constructor takes an `IFoo` parameter, find an `IFoo`-implementing type in its collection of services, and pass it to the ctor.
 
 In large systems, this approach can be *very* tempting, because it "solves" the problem of plumbing data all over the place. If I need to make `AClass`, I don't have to figure out where to find `Foo`, it just works. Like magic.
 
@@ -190,12 +194,16 @@ Let's call it what it is. We're making globals (bad) without it looking like we'
 
 Actually, there is one characteristic of this approach that I *do* particularly like: it is possible to write a test for the configuration:
 
-```csharp
+<!-- snippet: service-locator-approval-test -->
+<a id='snippet-service-locator-approval-test'></a>
+```cs
 var services = new Services();
 services.Add<IFoo>(new Foo());
 
 Approvals.Verify(services);
 ```
+<sup><a href='/code_samples/Decoupled Design/TestProject1/TestDependencyInversion.cs#L44-L49' title='Snippet source file'>snippet source</a> | <a href='#snippet-service-locator-approval-test' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
 
 (I'm assuming it has a nice `.ToString()` that prints its configuration in a human-friendly format. Or we write a formatter. Point is, this needs to be good for humans.)
 

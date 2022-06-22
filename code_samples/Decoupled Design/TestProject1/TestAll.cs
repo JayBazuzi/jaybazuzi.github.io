@@ -31,13 +31,14 @@ public class TestAll
             typeof(Direct_Call.Program).Assembly,
             typeof(EventBased.Program).Assembly,
             typeof(EventBasedWithConfigure.Program).Assembly,
+            typeof(DependencyInjection.Program).Assembly,
         };
 
         var mains = assemblies.SelectMany(_ => _.GetTypes())
             .Where(_ => _.Name.StartsWith("Program"))
             .SelectMany(_ => _.GetMethods())
             .Where(_ => _.Name.StartsWith("Main"));
-        mains.Should().HaveCount(4);
+        mains.Should().HaveCount(5);
         return mains;
     }
 

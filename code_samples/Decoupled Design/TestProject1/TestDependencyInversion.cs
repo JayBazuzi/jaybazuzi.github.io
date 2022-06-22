@@ -1,4 +1,9 @@
-using DependencyInversion;
+using ApprovalTests;
+using DependencyInjection;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using AClass = DependencyInversion.AClass;
+using Foo = DependencyInversion.Foo;
+using IFoo = DependencyInversion.IFoo;
 
 [TestClass]
 public class TestDependencyInversion
@@ -28,4 +33,19 @@ public class TestDependencyInversion
         }
     }
 // end-snippet
+}
+
+[TestClass]
+public class TestDependencyInjection
+{
+    [TestMethod]
+    public void MyTestMethod()
+    {
+        // begin-snippet: service-locator-approval-test
+        var services = new Services();
+        services.Add<IFoo>(new Foo());
+
+        Approvals.Verify(services);
+        // end-snippet
+    }
 }
