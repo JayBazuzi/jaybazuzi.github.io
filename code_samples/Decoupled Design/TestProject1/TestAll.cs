@@ -33,8 +33,10 @@ public class TestAll
             typeof(EventBasedWithConfigure.Program).Assembly,
         };
 
-        var mains = assemblies.SelectMany(_ => _.GetTypes()).Where(_ => _.Name == "Program")
-            .SelectMany(_ => _.GetMethods()).Where(_ => _.Name.StartsWith("Main"));
+        var mains = assemblies.SelectMany(_ => _.GetTypes())
+            .Where(_ => _.Name.StartsWith("Program"))
+            .SelectMany(_ => _.GetMethods())
+            .Where(_ => _.Name.StartsWith("Main"));
         mains.Should().HaveCount(4);
         return mains;
     }
