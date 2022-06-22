@@ -22,6 +22,7 @@ public class AClass
 
 public static class Program
 {
+    // begin-snippet: event-based-configure
     public static (AClass, Foo) Configure()
     {
         var foo = new Foo();
@@ -35,4 +36,5 @@ public static class Program
         var (aClass, _) = Configure();
         aClass.Do();
     }
+    // end-snippet
 }

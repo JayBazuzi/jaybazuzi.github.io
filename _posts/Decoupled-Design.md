@@ -271,21 +271,25 @@ Now there is even less coupling between `Foo` and `AClass`. They don't know abou
 
 Unfortunately we have lost even more code coverage - the code in `Main()` is doing more than before. Luckily we can extract a method:
 
-```csharp
-    public static (AClass, Foo) Initialize()
-    {
-        var foo = new Foo();
-        var aClass = new AClass();
-        aClass.OnBaz += foo.Bar;
-        return (aClass, foo);
-    }
+<!-- snippet: event-based-configure -->
+<a id='snippet-event-based-configure'></a>
+```cs
+public static (AClass, Foo) Configure()
+{
+    var foo = new Foo();
+    var aClass = new AClass();
+    aClass.OnBaz += foo.Bar;
+    return (aClass, foo);
+}
 
-    public static void Main4()
-    {
-        var (aClass, _) = Initialize();
-        aClass.Do();
-    }
+public static void Main()
+{
+    var (aClass, _) = Configure();
+    aClass.Do();
+}
 ```
+<sup><a href='/code_samples/Decoupled Design/Event Based with Configure/Program.cs#L25-L39' title='Snippet source file'>snippet source</a> | <a href='#snippet-event-based-configure' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
 
 and write this test:
 
