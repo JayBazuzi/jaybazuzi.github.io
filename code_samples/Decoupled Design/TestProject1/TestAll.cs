@@ -34,7 +34,7 @@ public class TestAll
         };
 
         var mains = assemblies.SelectMany(_ => _.GetTypes()).Where(_ => _.Name == "Program")
-            .Select(_ => _.GetMethod("Main"));
+            .SelectMany(_ => _.GetMethods()).Where(_ => _.Name.StartsWith("Main"));
         mains.Should().HaveCount(4);
         return mains;
     }
