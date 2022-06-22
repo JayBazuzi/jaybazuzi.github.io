@@ -262,7 +262,7 @@ Assert.AreEqual(
     results.Single()
 );
 ```
-<sup><a href='/code_samples/Decoupled Design/TestProject1/TestEventBased.cs#L21-L32' title='Snippet source file'>snippet source</a> | <a href='#snippet-event-based-test' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/code_samples/Decoupled Design/TestProject1/TestEventBased.cs#L23-L34' title='Snippet source file'>snippet source</a> | <a href='#snippet-event-based-test' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 This test is basically accomplishing the same thing as the mock-based test in the previous section, but with an event instead of an interface, and without a mock.
@@ -293,13 +293,17 @@ public static void Main()
 
 and write this test:
 
-```csharp
-var (aClass, foo) = Program.Initialize();
+<!-- snippet: event-based-configure-test -->
+<a id='snippet-event-based-configure-test'></a>
+```cs
+var (aClass, foo) = Program.Configure();
 
 Assert.IsTrue(
     aClass.OnBaz.GetInvocationList().Contains(foo.Bar)
-    );
+);
 ```
+<sup><a href='/code_samples/Decoupled Design/TestProject1/TestEventBased.cs#L10-L16' title='Snippet source file'>snippet source</a> | <a href='#snippet-event-based-configure-test' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
 
 # Decoupled Design
 

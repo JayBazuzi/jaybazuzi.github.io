@@ -7,11 +7,13 @@ public class TestEventBased
     [TestMethod]
     public void TestConfigure()
     {
+        // begin-snippet: event-based-configure-test
         var (aClass, foo) = Program.Configure();
 
         Assert.IsTrue(
             aClass.OnBaz.GetInvocationList().Contains(foo.Bar)
         );
+        // end-snippet
     }
 
 
