@@ -8,6 +8,7 @@ internal class Foo
     }
 }
 
+// begin-snippet: event-based
 public class AClass
 {
     public Action<string> OnBaz = delegate { };
@@ -31,3 +32,4 @@ public static class Program
         aClass.Do();
     }
 }
+// end-snippet

@@ -216,20 +216,22 @@ In almost every codebase I've worked with, the configuration was known at compil
 
 Can we reduce coupling further, and how does that affect tests? Suppose we replace the interface with an event*, and make the top-level orchestrator subscribe the event:
 
-```csharp
-class AClass
+<!-- snippet: event-based -->
+<a id='snippet-event-based'></a>
+```cs
+public class AClass
 {
     public Action<string> OnBaz = delegate { };
 
     public void Do()
     {
         // ...
-        this.OnBaz.Invoke("Hello, World!");
+        OnBaz("Hello, World!");
         // ...
     }
 }
 
-static class Program
+public static class Program
 {
     public static void Main()
     {
@@ -241,6 +243,8 @@ static class Program
     }
 }
 ```
+<sup><a href='/code_samples/Decoupled Design/Event Based/Program.cs#L11-L35' title='Snippet source file'>snippet source</a> | <a href='#snippet-event-based' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
 
 We can test `AClass` thusly:
 
