@@ -6,7 +6,6 @@ title: Decoupled Design with Events
 When we try to apply unit testing, a question that often comes up is "how can we test this difficult-to-test code?". That question has an important built-in assumption, that the code as currently written should not change for the sake of testing, and shall be tested as-is. That's unfortunate, since a big potential benefit of unit testing is that it helps you detect and repair harmful coupling. Let's look specifically at some options for decoupling for testability.
 
 <!-- snippet: direct-call -->
-<a id='snippet-direct-call'></a>
 ```cs
 public static class Program
 {
@@ -37,13 +36,11 @@ public class AClass
     }
 }
 ```
-<sup><a href='/code_samples/Decoupled Design/1. Direct Call/Program.cs#L3-L33' title='Snippet source file'>snippet source</a> | <a href='#snippet-direct-call' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 We want to test that the right output is printed at the right time. One option is to override `Console.Out` to capture that result:
 
 <!-- snippet: end-to-end-test -->
-<a id='snippet-end-to-end-test'></a>
 ```cs
 using var consoleOutput = new StringWriter();
 Console.SetOut(consoleOutput);
@@ -52,7 +49,6 @@ Program.Main();
 
 Assert.AreEqual("Hello, World!", consoleOutput.ToString());
 ```
-<sup><a href='/code_samples/Decoupled Design/TestProject1/TestAll.cs#L64-L71' title='Snippet source file'>snippet source</a> | <a href='#snippet-end-to-end-test' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 We're using `Console` here but this approach could work with every external dependency - the file system, HTTP, a database, etc.
@@ -66,7 +62,6 @@ This is a toy example; in the real world if we approached all testing this way -
 A popular alternative is to add a layer of indirection and use it to inject a test double. Suppose we refactor to extract an interface:
 
 <!-- snippet: dependency-inversion-interface -->
-<a id='snippet-dependency-inversion-interface'></a>
 ```cs
 public interface IFoo
 {
@@ -81,13 +76,11 @@ public class Foo : IFoo
     }
 }
 ```
-<sup><a href='/code_samples/Decoupled Design/Dependency Inversion/Program.cs#L3-L16' title='Snippet source file'>snippet source</a> | <a href='#snippet-dependency-inversion-interface' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 And then parameterize:
 
 <!-- snippet: dependency-inversion-usage -->
-<a id='snippet-dependency-inversion-usage'></a>
 ```cs
 public class AClass
 {
@@ -115,13 +108,11 @@ public static class Program
     }
 }
 ```
-<sup><a href='/code_samples/Decoupled Design/Dependency Inversion/Program.cs#L18-L44' title='Snippet source file'>snippet source</a> | <a href='#snippet-dependency-inversion-usage' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Which allows us to substitute a test double:
 
 <!-- snippet: dependency-inversion-test -->
-<a id='snippet-dependency-inversion-test'></a>
 ```cs
 [TestMethod]
 public void Test()
@@ -147,7 +138,6 @@ private class FooMock : IFoo
     }
 }
 ```
-<sup><a href='/code_samples/Decoupled Design/TestProject1/TestDependencyInversion.cs#L11-L35' title='Snippet source file'>snippet source</a> | <a href='#snippet-dependency-inversion-test' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 I like that this lets me test `AClass` independently.
@@ -169,7 +159,6 @@ A popular adjust to dependency *inversion*, especially in large software systems
 Instead of having `Main()` instantiating objects with the correct configuration, we might have something like:
 
 <!-- snippet: dependency-injection-main -->
-<a id='snippet-dependency-injection-main'></a>
 ```cs
 public static void Main()
 {
@@ -181,7 +170,6 @@ public static void Main()
     aClass.Do();
 }
 ```
-<sup><a href='/code_samples/Decoupled Design/Dependency Injection/Program.cs#L61-L71' title='Snippet source file'>snippet source</a> | <a href='#snippet-dependency-injection-main' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 `Services` would detect that `AClass` constructor takes an `IFoo` parameter, find an `IFoo`-implementing type in its collection of services, and pass it to the ctor.
@@ -195,14 +183,12 @@ Let's call it what it is. We're making globals (bad) without it looking like we'
 Actually, there is one characteristic of this approach that I *do* particularly like: it is possible to write a test for the configuration:
 
 <!-- snippet: service-locator-approval-test -->
-<a id='snippet-service-locator-approval-test'></a>
 ```cs
 var services = new Services();
 services.Add<IFoo>(new Foo());
 
 Approvals.Verify(services);
 ```
-<sup><a href='/code_samples/Decoupled Design/TestProject1/TestDependencyInversion.cs#L44-L49' title='Snippet source file'>snippet source</a> | <a href='#snippet-service-locator-approval-test' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 (I'm assuming it has a nice `.ToString()` that prints its configuration in a human-friendly format. Or we write a formatter. Point is, this needs to be good for humans.)
@@ -217,7 +203,6 @@ In almost every codebase I've worked with, the configuration was known at compil
 Can we reduce coupling further, and how does that affect tests? Suppose we replace the interface with an event*, and make the top-level orchestrator subscribe the event:
 
 <!-- snippet: event-based -->
-<a id='snippet-event-based'></a>
 ```cs
 public class AClass
 {
@@ -243,13 +228,11 @@ public static class Program
     }
 }
 ```
-<sup><a href='/code_samples/Decoupled Design/Event Based/Program.cs#L11-L35' title='Snippet source file'>snippet source</a> | <a href='#snippet-event-based' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 We can test that `AClass` raises the event at the right time, like this:
 
 <!-- snippet: event-based-test -->
-<a id='snippet-event-based-test'></a>
 ```cs
 var aClass = new AClass();
 var results = new List<string>();
@@ -262,7 +245,6 @@ Assert.AreEqual(
     results.Single()
 );
 ```
-<sup><a href='/code_samples/Decoupled Design/TestProject1/TestEventBased.cs#L23-L34' title='Snippet source file'>snippet source</a> | <a href='#snippet-event-based-test' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 This test is basically accomplishing the same thing as the mock-based test in the previous section, but with an event instead of an interface, and without a mock.
@@ -272,7 +254,6 @@ Now there is even less coupling between `Foo` and `AClass`. They don't know abou
 Unfortunately we have lost even more code coverage - the code in `Main()` is doing more than before. Luckily we can extract a method:
 
 <!-- snippet: event-based-configure -->
-<a id='snippet-event-based-configure'></a>
 ```cs
 public static (AClass, Foo) Configure()
 {
@@ -288,13 +269,11 @@ public static void Main()
     aClass.Do();
 }
 ```
-<sup><a href='/code_samples/Decoupled Design/Event Based with Configure/Program.cs#L25-L39' title='Snippet source file'>snippet source</a> | <a href='#snippet-event-based-configure' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 and write this test:
 
 <!-- snippet: event-based-configure-test -->
-<a id='snippet-event-based-configure-test'></a>
 ```cs
 var (aClass, foo) = Program.Configure();
 
@@ -302,7 +281,6 @@ Assert.IsTrue(
     aClass.OnBaz.GetInvocationList().Contains(foo.Bar)
 );
 ```
-<sup><a href='/code_samples/Decoupled Design/TestProject1/TestEventBased.cs#L10-L16' title='Snippet source file'>snippet source</a> | <a href='#snippet-event-based-configure-test' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 # Decoupled Design
