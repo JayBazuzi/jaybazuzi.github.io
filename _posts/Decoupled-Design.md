@@ -79,12 +79,6 @@ public interface IFoo
 }
 
 public class Foo : IFoo
-{
-    public void Bar(string message)
-    {
-        Console.Write(message);
-    }
-}
 ```
 <!-- endSnippet -->
 
