@@ -146,21 +146,17 @@ private class FooMock : IFoo
 
 I like that this lets me test `AClass` independently.
 
-We might still use the `Console.SetOut()` approach to test `Foo`, but now we only have to do that for a smaller chunk of the program instead of the whole. That's a big improvement.
+We might still use the `Console.SetOut()` approach to test `Foo`, but now we only have to use hijacking for a smaller chunk of the program instead of the whole. That's a big improvement.
 
-Tests can mow be more focused, making them easier to read, write, diagnose, and maintain. Cool.
+Tests can now be more focused, making them easier to read, write, diagnose, and maintain. Cool.
 
-We have lost all coverage of `Main()`. Maybe that's acceptable, since it is quite small and simple. The only way to get that cverage back would be whole-system testing like the original example.
+Sadly we have lost all coverage of `Main()`. The only way to get that coverage back would be whole-system testing like the original example. Maybe that's is an acceptable loss, since `Main()` is quite small and simple. 
 
-My design sense is annoyed that we have an interface that only exists for the purpose of testing, and that we have a class/interface pair with the same name (`Foo`/`IFoo`). These are code smells. There is indirection without abstraction.
-
-The coupling between `AClass` and `Foo` is reduced, but not completely eliminated. For example, if we wanted to rename `Bar()` we'd need to update both.
+My design sense is annoyed that we have an interface that only exists for the purpose of testing, and that we have a class/interface pair with the same name (`Foo`/`IFoo`), and that this interface creates *indirection* without *abstraction*. These are code smells.
 
 ## Dependency Injection / Service Locator
 
-A popular adjust to dependency *inversion*, especially in large software systems is dependency *injection*. Oh, the sweet, sweet siren song of Service Locator.
-
-Instead of having `Main()` instantiating objects with the correct configuration, we might have something like:
+A popular adjunct to dependency *inversion*, especially in large software systems is dependency *injection*. Oh, the sweet, sweet siren song of Service Locator. Instead of having `Main()` instantiating objects with the correct configuration, we might have something like:
 
 <!-- snippet: dependency-injection-main -->
 ```cs
@@ -176,15 +172,15 @@ public static void Main()
 ```
 <!-- endSnippet -->
 
-`Services` would detect that `AClass` constructor takes an `IFoo` parameter, find an `IFoo`-implementing type in its collection of services, and pass it to the ctor.
+`Services` might use reflection detect that `AClass` constructor takes an `IFoo` parameter, find an `IFoo`-implementing type in its collection of services, and pass it to the ctor.
 
-In large systems, this approach can be *very* tempting, because it "solves" the problem of plumbing data all over the place. If I need to make `AClass`, I don't have to figure out where to find `Foo`, it just works. Like magic.
+In large systems, this approach can be *very* tempting, because it "solves" the problem of plumbing things all over the place. If I need to make a new `AClass`, I don't have to figure out where to find `Foo`, it just works. Like magic.
 
 Let's call it what it is. We're making globals (bad) without it looking like we're making globals (worse) and making dependencies less visible (also bad). Do not like.
 
 ### Testing Configuration
 
-Actually, there is one characteristic of this approach that I *do* particularly like: it is possible to write a test for the configuration:
+Actually, there is one characteristic of this approach that I *do* particularly like: it is possible to write a test for the configuration without invoking the whole system:
 
 <!-- snippet: service-locator-approval-test -->
 ```cs
@@ -195,12 +191,10 @@ Approvals.Verify(services);
 ```
 <!-- endSnippet -->
 
-(I'm assuming it has a nice `.ToString()` that prints its configuration in a human-friendly format. Or we write a formatter. Point is, this needs to be good for humans.)
-
 
 ### Dynamic Configuration
 
-In almost every codebase I've worked with, the configuration was known at compile time. Occasionally, though, some aspect of configuration might need to be adjusted in production or at runtime. I think the details are off-topic for this article, but I acknowledge the need is real. Let's come back to that another time.
+In almost every codebase I've worked with, the configuration was known at compile time. Occasionally, though, some aspect of configuration might need to be adjusted in production or at runtime, and the above approach can be helpful there. I think the details are off-topic for this article, but I acknowledge the need is real. Let's come back to that another time.
 
 # Event-based
 
@@ -253,9 +247,9 @@ Assert.AreEqual(
 
 This test is basically accomplishing the same thing as the mock-based test in the previous section, but with an event instead of an interface, and without a mock.
 
-Now there is even less coupling between `Foo` and `AClass`. They don't know about each other. To our previous example, we could rename `Bar` without changing `AClass`.
+Now there is even less coupling between `Foo` and `AClass`. They don't know about each other at all!
 
-Unfortunately we have lost even more code coverage - the code in `Main()` is doing more than before. Luckily we can extract a method:
+Unfortunately we have lost even more code coverage - the code in `Main()` is doing more than before, without tests. Luckily we can extract a method:
 
 <!-- snippet: event-based-configure -->
 ```cs
@@ -289,7 +283,7 @@ Assert.IsTrue(
 
 # Decoupled Design
 
-In his article on [Decoupled Design](https://arlobelshee.com/decoupled-design/) Arlo said:
+In his article on [Decoupled Design](https://arlobelshee.com/decoupled-design/) Arlo Belshee says:
 
 > A system has its static structure and its run-time structure.
 
@@ -307,11 +301,12 @@ In the third example, using events, the static structure becomes:
 - `AClass` is a thing
 - `Foo` is a thing that writes to the console
 - `Initialize()` ties them together
+
 Arlo goes on to say:
 
 > An application also has two relevant time frames: initialization and running 
 
-Initialization is handled by `Initialize()` which has no side effects and so is easy to test.
+Initialization is handled by `Configure()` which has no side effects and so is easy to test.
 
 We can test each part in isolation. Everything that happens during Running is already tested separately, except for `Main()` which is *very* simple, and would be very hard to get wrong and still compile.
 
