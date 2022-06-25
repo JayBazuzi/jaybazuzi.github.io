@@ -23,7 +23,7 @@ public class AClass
     }
 }
 
-; public class Foo
+public class Foo
 {
     public void Bar(string message)
     {
