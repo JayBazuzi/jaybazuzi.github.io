@@ -7,13 +7,13 @@ public interface IFoo
 }
 
 public class Foo : IFoo
+// end-snippet
 {
     public void Bar(string message)
     {
         Console.Write(message);
     }
 }
-// end-snippet
 
 // begin-snippet: dependency-inversion-usage
 public class AClass

@@ -5,6 +5,8 @@ title: Decoupled Design with Events
 
 When we try to apply unit testing, a question that often comes up is "how can we test this difficult-to-test code?". That question has an important built-in assumption, that the code as currently written should not change for the sake of testing, and shall be tested as-is. That's unfortunate, since a big potential benefit of unit testing is that it helps you detect and repair harmful coupling. Let's look specifically at some options for decoupling for testability.
 
+Consider this code:
+
 <!-- snippet: direct-call -->
 ```cs
 public static class Program
@@ -38,7 +40,9 @@ public class Foo
 ```
 <!-- endSnippet -->
 
-We want to test that the right output is printed at the right time. One option is to override `Console.Out` to capture that result:
+The three classes are all directly coupled. If we want to test that the right output is printed at the right time, we'll have to execute the entire program.
+
+One option is to override `Console.Out` to capture that result:
 
 <!-- snippet: end-to-end-test -->
 ```cs
@@ -51,15 +55,21 @@ Assert.AreEqual("Hello, World!", consoleOutput.ToString());
 ```
 <!-- endSnippet -->
 
-We're using `Console` here but this approach could work with every external dependency - the file system, HTTP, a database, etc.
+We're using `Console` here but this approach could work with every external dependency - the file system, HTTP, a database, etc. By redirecting any interaction with the outside world, we can control and inspect the whole program entirely in memory.
 
 There are some things to like about this approach: Test coverage is excellent. Internal refactoring will not break tests. For code that makes over-the-network calls, network or server issues will not cause tests to fail.
 
-This is a toy example; in the real world if we approached all testing this way -- by injecting/hijacking at the perimeter of the system to write only edge-to-edge tests -- our tests would lack some of the qualities we find valuable. Tests will be hard to read because they do a lot of unrelated setup. A single bug might cause many tests to fail. A single failing test could be caused by problems anywhere in the system. These tests are difficult to live with.
+This is a toy example; in the real world if we approached all testing this way -- by injecting/hijacking at the perimeter of the system to write only edge-to-edge tests -- our tests would lack some of the qualities we want:
+
+- Tests will be hard to read because they do a lot of unrelated setup.
+- A single bug might cause many tests to fail.
+- A single failing test could be caused by problems anywhere in the system.
+
+These tests are difficult to live with.
 
 # Dependency Inversion
 
-A popular alternative is to add a layer of indirection and use it to inject a test double. Suppose we refactor to extract an interface:
+A popular alternative is to add a layer of indirection and use it to inject a test double. Suppose we refactor by extracting an interface:
 
 <!-- snippet: dependency-inversion-interface -->
 ```cs
