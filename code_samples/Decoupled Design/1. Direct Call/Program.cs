@@ -5,7 +5,7 @@ public static class Program
 {
     public static void Main()
     {
-        var aClass = new AClass();
+        AClass aClass = new ();
         aClass.Do();
     }
 }
@@ -13,7 +13,7 @@ public static class Program
 
 public class AClass
 {
-    private readonly Foo _foo = new Foo();
+    private readonly Foo _foo = new();
 
     public void Do()
     {
