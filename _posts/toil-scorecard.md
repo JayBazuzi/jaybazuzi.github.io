@@ -3,15 +3,17 @@ layout: post
 title: The Toil Scorecard
 ---
 
-When a developer makes a code change to your software system, how long will it take for them to validate that their change works correctly and does not break existing behaviors? Is this something that only a seasoned expert can do, or can a new person do it as well? What about rotating credentials or ensuring that all 3rd-party dependencies are up to date? How do we observe that production is healthy and operating correctly? The Toil Scorecard gives teams a way to measure these costs and make toil visible to the organization.
+When a developer makes a code change to the software system, how long will it take to validate that the change works correctly and does not break existing behaviors? What about rotating credentials or ensuring that all 3rd-party dependencies are up to date? How do we observe that production is healthy and operating correctly? The Toil Scorecard gives teams a way to measure these costs and make toil visible to the organization.
 
 # Measure time and decisions
 
-Measure both **how long** it takes to do these activities and how many **decisions** are required, because executive function is a limited resource for everyone. (A single digit of precision is fine.)
+Measure both **how long** it takes to do these activities and how many **decisions** are required, because executive function is a limited resource for everyone. 
 
-# Grade the maturity
+Aggregate per month. In the Toil Scorecard we don't need to differentiate between "fast + frequent" vs. "slow + seldom".
 
-We can also give a grade to each activity:
+A single digit of precision is fine.
+
+# Grade the automation maturity
 
 | Score | Description                                                                   |
 |-------|-------------------------------------------------------------------------------|
@@ -64,7 +66,7 @@ There is no partial credit. For example, automated tests cover most of the syste
 Assemble the answers to these questions into a scorecard, which might look like:
 
 | Area          | Score | Engineer Minutes per Month | Engineer Decisions per Month |
-|---------------|-------|----------------------------|------------------------------|
+|---------------|:-----:|:--------------------------:|:----------------------------:|
 | Validation    | B     | 600                        | 100                          |
 | Release       | C     | 700                        | 200                          |
 | Maintenance   | D     | 800                        | 300                          |
@@ -79,4 +81,6 @@ Assemble the answers to these questions into a scorecard, which might look like:
 
 * When thinking about the design of the next feature, consider how it will impact each of these metrics.
 
-* Use Arlo's Belshee's Automation-as-a-Process ([video](https://www.youtube.com/watch?v=ydq-KjGDRJg), [article](https://digdeeproots.substack.com/p/when-should-i-automate) to quickly get to `B`.
+* Use Arlo's Belshee's Automation-as-a-Process ([video](https://www.youtube.com/watch?v=ydq-KjGDRJg), [article](https://digdeeproots.substack.com/p/when-should-i-automate)) to quickly get to `B`.
+
+* Extend this system to measure what is important in your context.
