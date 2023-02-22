@@ -72,9 +72,9 @@ Assemble the answers to these questions into a scorecard, which might look like:
 
 # How to use it.
 
-* Build a scorecard repo/project/service/system/tool/offering your team owns. Use this to see where your capacity is going and where to invest to reduce toil. Look for the "hot spots", where we spend a lot of time and make a lot of decisions, and improve those.
+* Build a scorecard for each repo/project/service/system/tool/offering your team owns. Look for hot spots - where a lot of time and decision-making capacity is consumed - to decide where to invest to reduce toil.
 
-* Collect the scorecards into a report that the boss's boss can peruse so they can support those investments. They'll probably want this for all their teams.
+* Collect all the scorecards into a report that the boss's boss can peruse so they can support those investments. They'll probably want this for all their teams.
 
 * When thinking about the design of the next feature, consider how it will impact each of these metrics.
 
