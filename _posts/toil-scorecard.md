@@ -25,7 +25,7 @@ A single digit of precision is plenty. Even order-of-magnitude is good enough, e
 
 Give a separate score for each area.
 
-There is no partial credit within an area. If parts are written down in a playbook but others are in the expert's head, then score a `D`.
+There is no partial credit within an area. For example, if some parts are written down in a playbook but other parts are in the expert's head, then score a `D`.
 
 # The Areas
 
@@ -33,6 +33,8 @@ There is no partial credit within an area. If parts are written down in a playbo
 ## Validation
 
 Test that an *arbitrary* code change works correctly and does not break existing behaviors, without relying on a mental model of the system.
+
+### Examples
 
 |   |                                                                                                                     |
 |:-:|---------------------------------------------------------------------------------------------------------------------|
@@ -42,10 +44,13 @@ Test that an *arbitrary* code change works correctly and does not break existing
 | D | The dev who wrote the Payments module knows how to test it and watches for PRs that touch that area.                |
 | E | We don't know that the Payments module requires special treatment, because the dev who wrote Payments has moved on. |
 
-### Release
+## Release
 
-| Release       |        Ship an update to production. Include paperwork and sign-offs.     |
+Ship to production. Include required paperwork and sign-offs. Remember to account for special cases like "this release includes a database migration".
 
+If additional validation is necessary to release ("hardening sprint" or "manual test pass"), include that in the Validation cost.
+
+### Examples
 
 |    |                                                                                                                                   |
 |:--:|-----------------------------------------------------------------------------------------------------------------------------------|
@@ -53,28 +58,42 @@ Test that an *arbitrary* code change works correctly and does not break existing
 | C  | We have a release playbook. Both the experienced team members and the person that joined yesterday can follow it in the same way. |
 | D  | Each person "knows" how to release but they each do it differently.                                                               |
 
-### Maintenance
+## Maintenance
 
-| Maintenance   | If the humans went away, how long would the system keep functioning?           |
+Details vary widely between systems. A good question to start with is "If the humans went away, how long would the system keep functioning?"
+
+### Examples
 
 |   |                                                                     |
 |---|---------------------------------------------------------------------|
 | A | SSL certificates are automatically updated well before they expire. |
 
-### Dependencies
+## Dependencies
 
-| Dependencies  |      Are we using the latest version of every 3rd-party dependency? How do we know when a new version  is available? How do we know if it contains an urgent security fix?       |
+Are we using the latest version of every 3rd-party dependency?
+How do we know when a new version becomes available?
+How do we know if it contains an urgent security fix?
+
+Most systems have a few extra dependencies hiding in the crevices. Is your CI build using the latest version of the OS? Is your build system using the latest version of Maven/CMake/Bazel/Gradle? Be sure to include these in your assesment.
+
+### Examples
 
 |   |                                                               |
 |---|---------------------------------------------------------------|
 | A | dependabot sends an automerge PR for every updated dependency |
 | B | dependabot sends a PR but a human reviews and approves        |
+| F | we use Python 2.7 to automate the release process             |
 
-### Observability
+## Observability
+
+Details vary widely between system. A good question to start with is "How do we know that production is healthy?"
+
+### Examples
 |   |                                                                         |
 |---|-------------------------------------------------------------------------|
-| D | Ops has learned to watch for out-of-memory errors and reboot the server |
-| F | We find out that the site is down when our users complain               |
+| B | We get paged when things go wrong.                                      |
+| D | Ops has learned to watch for out-of-memory errors and reboot the server.|
+| F | We find out that the site is down when our users complain.              |
 
 
 # The Scorecard
