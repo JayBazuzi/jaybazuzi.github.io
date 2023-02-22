@@ -13,19 +13,21 @@ Measure both **how long** it takes to do these activities and how many **decisio
 
 We can also give a grade to each activity:
 
-| Score | Description                                                                              |
-|-------|------------------------------------------------------------------------------------------|
-| A     | Fully automated; a human does not need to be involved.                                   |
-| B     | Partially automated, but a human needs to know how to wield or interpret the automation. |
-| C     | The process is thorougly documented in a playbook that a human can follow.               |
-| D     | Someone on the team knows how to do this.                                                |
-| F     | No one in the team knows how to do this.                                                 |
+| Score | Description                                                                   |
+|-------|-------------------------------------------------------------------------------|
+| A     | Fully automated; a human does not need to be involved.                        |
+| B     | Automated but a human needs to know how to wield or interpret the automation. |
+| C     | The process is thorougly documented in a playbook that a human can follow.    |
+| D     | Someone on the team knows how to do this.                                     |
+| F     | No one in the team knows how to do this.                                      |
+
+There is no partial credit. For example, automated tests cover most of the system, but for certain types of code changes we must manually test certain things, then the grade cannot be `B`.
 
 ## Some examples
 
 ### Validation
 | | |
-| - | - |
+| :-: | - |
 | A | Automated tests cover everything and automatically run in CI with every change. |
 | B | A human executes the automated tests and interprets the results. |
 | C | There's a document that says "if you change the Payments module, you must manually verify that payments still work"	|
@@ -34,29 +36,28 @@ We can also give a grade to each activity:
 
 ### Release
 | | |
-| - | - |
+| :-: | - |
 | A | Every time a PR is merged to `main` it is automatically deployed to production. |
 | C | We have a release playbook. Both the experienced team members and the person that joined yesterday can follow it in the same way. |
 | D | Each person "knows" how to release but they each do it differently. |
 
 ### Maintenance
 | | |
-| - | - |
+| :-: | - |
 | A | SSL certificates are automatically updated well before they expire. |
 
 ### Dependencies
 | | |
-| - | - |
+| :-: | - |
 | A | dependabot sends an automerge PR for every updated dependency |
 | B | dependabot sends a PR but a human reviews and approves |
 
 ### Observability
 | | |
-| - | - |
+| :-: | - |
 | D | Ops has learned to watch for out-of-memory errors and reboot the server |
 | F | We find out that the site is down when our users complain |
 
-There is no partial credit. For example, automated tests cover most of the system, but for certain types of code changes we must manually test certain things, then the grade cannot be `B`.
 
 # The Scorecard
 
