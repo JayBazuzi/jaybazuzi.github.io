@@ -13,15 +13,17 @@ Measure both **how long** it takes to do these activities and how many **decisio
 
 We can also give a grade to each activity:
 
-- A: Fully automated; a human does not need to be involved.
-- B: Partially automated, but a human needs to know how to wield or interpret the automation.
-- C: The process is thorougly documented in a playbook that a human can follow.
-- D: Someone on the team knows how to do this.
-- F: No one in the team knows how to do this.
+| Score | Description                                                                              |
+|-------|------------------------------------------------------------------------------------------|
+| A     | Fully automated; a human does not need to be involved.                                   |
+| B     | Partially automated, but a human needs to know how to wield or interpret the automation. |
+| C     | The process is thorougly documented in a playbook that a human can follow.               |
+| D     | Someone on the team knows how to do this.                                                |
+| F     | No one in the team knows how to do this.                                                 |
 
 ## Some examples
 
-## Validation
+### Validation
 | | |
 | - | - |
 | A | Automated tests cover everything and automatically run in CI with every change. |
@@ -30,25 +32,25 @@ We can also give a grade to each activity:
 | D | The dev who wrote the Payments module knows how to test it and watches for PRs that touch that area.
 | E | We don't know that the Payments module requires special treatment, because the dev who wrote Payments has moved on. |
 
-## Release
+### Release
 | | |
 | - | - |
 | A | Every time a PR is merged to `main` it is automatically deployed to production. |
 | C | We have a release playbook. Both the experienced team members and the person that joined yesterday can follow it in the same way. |
 | D | Each person "knows" how to release but they each do it differently. |
 
-## Maintenance
+### Maintenance
 | | |
 | - | - |
 | A | SSL certificates are automatically updated well before they expire. |
 
-## Dependencies
+### Dependencies
 | | |
 | - | - |
 | A | dependabot sends an automerge PR for every updated dependency |
 | B | dependabot sends a PR but a human reviews and approves |
 
-## Observability
+### Observability
 | | |
 | - | - |
 | D | Ops has learned to watch for out-of-memory errors and reboot the server |
