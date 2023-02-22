@@ -1,4 +1,7 @@
-Title: The Toil Scorecard
+---
+layout: post
+title: The Toil Scorecard
+---
 
 When a developer makes a code change to your software system, how long will it take for them to validate that their change works correctly and does not break existing behaviors? Is this something that only a seasoned expert can do, or can a new team member do it as well? What about rotating credentials or ensuring that 3rd-party dependencies are up to date? How do we observe that production is healthy and operating correctly? The Toil Scorecard gives teams a way to measure these costs and make toil visible to the organization.
 
