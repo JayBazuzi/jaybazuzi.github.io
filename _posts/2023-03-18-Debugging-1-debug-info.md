@@ -1,7 +1,6 @@
 ---
 layout: post
 title: What is Debug Info? (An Explainer)
-published: False
 excerpt_separator: <!--end-of-excerpt-->
 ---
 
