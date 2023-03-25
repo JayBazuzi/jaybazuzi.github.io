@@ -45,16 +45,7 @@ Now the search sequence is:
 2. It was originally compiled to `E:\builds\myprogram\bin\Debug\foo.exe` so it looks for ``E:\builds\myprogram\bin\Debug\foo.pdb`.
 3. Each of the symbol paths you added in in debugger settings
 
-## Symbol Cache
-
-You see that cache entry in the symbol settings? You should set it to some local directory (e.g. `C:\symbols`), so the debugger doesn't have to go over the network every time. That joins the search sequence:
-
-1. You are debugging `C:\bin\foo.exe`, so it looks for `C:\bin\foo.pdb`.
-2. It was originally compiled to `E:\builds\myprogram\bin\Debug\foo.exe` so it looks for ``E:\builds\myprogram\bin\Debug\foo.pdb`.
-3. The local symbol cache in debugger settings.
-4. Each of the symbol paths in debugger settings.
-
-You can see the log of this searching activity in the `Symbol Load Information` context menu item that is visible in the menu on the above screenshot of the Modules window.
+You can see the log of this searching activity in the `Symbol Load Information` context menu item that is visible in the menu on the above screenshot of the Modules window. It's great for diagnosing why symbols won't load.
 
 I said "matching PDB". What does it mean to "match"? What if you accidentally told it to look in the `2023-01-02\` directory instead of `2023-02-01\`? The PDB file with the right name might be found at that location, but it's the wrong file - all the variables and functions are probably laid out differently, and the debugger wouldn't be able to find them correctly. When the compiler records the path to the PDB file in the output binary, it also records PDB signature so the debugger can later ensure that it only loads an exact-match PDB file.
 
@@ -67,3 +58,14 @@ If we know the PDB signature, can we use it as a key to find the matching PDB fi
 Later this technology was extended to allow HTTP(S) connections to a symbol server over the internet. You can use this today to get debugging information for Windows and .NET binaries:
 
 ![Official Microsoft Symbol Servers](https://user-images.githubusercontent.com/1259628/224551344-90409a10-63f2-4bf7-9dd5-735a4ee6b158.png)
+
+## Symbol Cache
+
+You see that cache entry in the symbol settings? You should set it to some local directory (e.g. `C:\symbols`), so the debugger doesn't have to go over the network every time. That joins the search sequence:
+
+1. You are debugging `C:\bin\foo.exe`, so it looks for `C:\bin\foo.pdb`.
+2. It was originally compiled to `E:\builds\myprogram\bin\Debug\foo.exe` so it looks for ``E:\builds\myprogram\bin\Debug\foo.pdb`.
+3. The local symbol cache in debugger settings.
+4. Each of the symbol paths in debugger settings.
+
+
