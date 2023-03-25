@@ -11,6 +11,8 @@ When you build your source code locally on your development machine and then run
 
 <!--end-of-excerpt-->
 
+## Local build
+
 At build time the debug information is placed on disk adjacent to the binary; for example `C:\source\myprogram\bin\Debug\foo.exe` and `C:\source\myprogram\bin\Debug\foo.pdb`. If you debug the program the debugger will just find the PDB file right there.
 
 If you move the build binaries to another directory (e.g. `C:\bin\foo.exe`), the debugger just finds the PDB file anyway. How? Because the compiler records the generated PDB path (`C:\source\myprogram\bin\Debug\foo.pdb`) in the binary. 
@@ -19,6 +21,8 @@ We can describe this as a search sequence:
 
 1. You are debugging `C:\bin\foo.exe`, so look for `C:\bin\foo.pdb`.
 2. It was originally compiled to `C:\source\myprogram\bin\Debug\foo.exe` so look for `C:\source\myprogram\bin\Debug\foo.pdb`.
+
+## Remote build
 
 It's common for the "official" build to happen in some kind of official build environment, like CI/CD or a build lab. As a developer if you copy those binaries to your development machine and try to debug them, you'll quickly get stuck if you didn't copy the PDB with it. The debugger searches like this:
 
@@ -54,7 +58,7 @@ You can see the log of this searching activity in the `Symbol Load Information` 
 
 I said "matching PDB". What does it mean to "match"? What if you accidentally told it to look in the `2023-01-02\` directory instead of `2023-02-01\`? The PDB file with the right name might be found at that location, but it's the wrong file - all the variables and functions are probably laid out differently, and the debugger wouldn't be able to find them correctly. When the compiler records the path to the PDB file in the output binary, it also records PDB signature so the debugger can later ensure that it only loads an exact-match PDB file.
 
-# Enter Symbol Server. 
+## Symbol Server. 
 
 Finding PDB files this way can be a hassle. Can we do better? 
 
