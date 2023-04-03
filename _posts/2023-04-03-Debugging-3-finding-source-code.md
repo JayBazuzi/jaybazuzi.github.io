@@ -5,8 +5,6 @@ published: True
 excerpt_separator: <!--end-of-excerpt-->
 ---
 
-# How does the debugger find source code?
-
 When you build your source code locally on your development machine and then run it under the debugger, the debugger finds the debugging information automatically. What about when you didn't build the program yourself?
 
 (Part 3 of a series on Windows debugging.)
