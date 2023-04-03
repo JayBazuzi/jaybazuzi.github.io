@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Finding source code in Visual Studio, with Source Server
-published: False
+published: True
 excerpt_separator: <!--end-of-excerpt-->
 ---
 
@@ -15,13 +15,13 @@ When you build your source code locally on your development machine and then run
 
 # What about source code?
 
-Once the debugger finds debugging information for your program, the next thing you'll want is matching source code. If you built binaries locally that is again easy - the PDB file says that function `Foo()` came from `C:\source\myprogram\foo.cpp` so the debugger looks there first.
+Once the debugger finds debugging information for your program, the next thing you'll want is matching source code. If you built binaries locally that is again easy - the PDB file says that function `Foo()` came from `C:\source\myprogram\foo.cpp` so the debugger looks for `C:\source\myprogram\foo.cpp` first.
 
-(Aside: The debugger uses a checksum to ensure the file it finds is an exact match, because a mismatch would make debugging very confusing. That is especially problematic on large systems where there might be multiple files with the same name. Visual Studio has a whole bunch of `thread.cpp`, for example.)
+(Aside: The debugger uses a checksum to ensure the file it finds is an exact match, because a mismatch would make debugging very confusing. That is especially problematic on large systems where there might be multiple files with the same name. The Visual Studio codebase has a whole bunch of `thread.cpp`, for example.)
 
-"Source Server" takes the spirit of Symbol Server and extends to finding source code. The official build knows it used `foo.cpp` revision 5 and can record that information in the PDB file; the debugger can use that information to retrieve `foo.cpp` revision 5 from the source control system. 
+"Source Server" takes the spirit of Symbol Server and extends it to finding source code. Suppose the official build knows it used `foo.cpp` revision 5. It can record that information in the PDB file. The debugger can use that information to retrieve `foo.cpp` revision 5 from the source control system. 
 
-At the time when source server was created, Microsoft mostly used Source Depot (SD) as its version control system. To retrieve a specific file from SD you might run `sd.exe print -q //depot/myprogram/foo.cpp#5`. Source Depot is an internal fork of Perforce. Even though SD is internal, it is mentioned in the [public documentation for Source Server](https://learn.microsoft.com/en-us/windows/win32/debug/source-server-and-source-indexing) even today. Funny.
+At the time when source server was created, Microsoft mostly used Source Depot (SD) as its version control system. Source Depot is an internal fork of Perforce. To retrieve a specific file from SD you might run `sd.exe print -q //depot/myprogram/foo.cpp#5`. Even though SD is internal, it is mentioned in the [public documentation for Source Server](https://learn.microsoft.com/en-us/windows/win32/debug/source-server-and-source-indexing) even today. Funny.
 
 `p4 print` works pretty much the same as `sd print`, so if your code is in Perforce you can use the same approach. I don't really know Subversion but `svn cat` seems to match as well. Team Foundation Server Version Control has `tf view`.
 
