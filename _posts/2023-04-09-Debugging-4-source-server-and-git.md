@@ -71,7 +71,9 @@ All of this gets more complicated as the number of machines, developers, and yea
 
 People doing the debugging are probably developers, and developers have probably already cloned the repo on their computer already. Can we use that?
 
-Yes, but we need to find the repo somehow. Maybe you already a well-known location for the repo by your organization's convention, but I prefer a well-known environment variable. If you make the source server command something like `cd %MYPROGRAM_REPO_LOCATION_FOR_SOURCE_SERVER% & git fetch & git show ...`, then you can tell developers to run `setx MYPROGRAM_REPO_LOCATION_FOR_SOURCE_SERVER C:\path\to\repo` before launching Visual Studio. 
+Yes, but we need to find the repo somehow. Maybe you already have a well-known location for the repo by your organization's convention. Another optoin is to use an environment variable for this purpose.
+
+If you make the source server command something like `cd %MYPROGRAM_REPO_LOCATION_FOR_SOURCE_SERVER% & git fetch & git show ...`, then you can tell developers to run `setx MYPROGRAM_REPO_LOCATION_FOR_SOURCE_SERVER C:\path\to\repo` before launching Visual Studio. 
 
 Note the `git fetch` to ensure that the new revisions are available, in case the developer hasn't done a `fetch` in this repo for a while and the needed revision is not yet present.
 
