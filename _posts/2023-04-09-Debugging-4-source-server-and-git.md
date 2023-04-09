@@ -29,7 +29,7 @@ wget https://raw.githubusercontent.com/JayBazuzi/jaybazuzi.github.io/a3124c74199
 
 This assumes you have permissions to access these files via HTTP(S). That wasn't true at one company that used GitHub Enterprise Cloud: the developer's machines were on a separate, untrusted network, and could access the repo via SSH but not the GitHub web API.
 
-Also, until recently Windows didn't have a built-in `wget` or `curl` command. (curl was added to WIndon your enterprise maybe you can guarantee that one is installed and on the path?
+Also, until recently Windows didn't have a built-in `wget` or `curl` command. (curl was added to Windows 10 not too long ago.) Maybe your enterprise maybe you can guarantee that one is installed and on the path?
 
 PowerShell has `Invoke-WebRequest` which looks handy. You need to use `-OutFile` not redirection (`>`). Also, PowerShell might be disabled per your enterprise's security policy. Ok, let's not use PowerShell.
 
