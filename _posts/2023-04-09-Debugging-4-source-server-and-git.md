@@ -63,7 +63,9 @@ This depends on cloning permissions - if you are set up with an SSH key but the 
 
 It also assumes a small enough repo that `git clone` is quick - a large repo may take too long to clone to make this viable. You can speed things up by replacing `git clone` with `git init & git fetch` (skipping the checkout). Also, maybe only fetch the revision you're looking for.
 
-Where will this repo live? Will you end up with multiple clones this way? How will you clean them up? All of this gets more complicated as the number of machines, developers, and years grow. Will the approach you implement today still be managable in the future?
+Where will this repo live? Will you end up with multiple clones this way? How will you clean them up? 
+Will the approach you implement today still be managable in the future?
+All of this gets more complicated as the number of machines, developers, and years grow.
 
 # Use an existing clone
 
