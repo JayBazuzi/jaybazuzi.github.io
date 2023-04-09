@@ -15,7 +15,7 @@ Configuring Source Server with your typical centrialized version control cystem 
 
 Partly this is because DVCS is just different than a centralized VCS. There is no "central" server you can ask for that revision. By convention, you may treat one repo as "central" (e.g. the one in your GitHub organization) but that's a convention, not a feature of Git.
 
-Also, Git doesn't have a way to print out the contents of an arbitrary file from a remote repo. `git show` only works in a local repo, not remotely.
+Also, Git doesn't have a built-in way to print out the contents of an arbitrary file from a remote repo. `git show` only works in a local repo, not remotely.
 
 I'm aware of several possible approaches in Git, each of which has some unfortunate limitations.
 
