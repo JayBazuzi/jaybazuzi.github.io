@@ -4,7 +4,7 @@ title: Understanding minidump debugging
 excerpt_separator: <!--end-of-excerpt-->
 ---
 
-# Programs are just data in memory
+## Programs are just data in memory
 
 Code is just data. Running programs are just data in memory. Debuggers just inspect that data. What if we take a snapshot?
 
