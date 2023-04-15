@@ -42,7 +42,13 @@ See, it's just data!
 
 Suppose we take a snapshot of all the memory of a program. We could save it to a file, move that file to another computer, point the debugger at it, and see all the same variables, callstacks, threads, etc. This is handy when the program crashes in production or in a test environment - take the snapshot so developers can inspect it later. (That's exactly what the "Watson" feature in Windows does.)
 
-You don't even have to wait for a crash - you can save a minidump any time you notice a strange behavior in the program.
+You don't even have to wait for a crash - you can save a minidump any time you notice a strange behavior in the program. Maybe you'll analyze it yourself later, or share it with someone else for their perspective. Here's one way to take that snapshot, in the VS Debugger:
+
+![image](https://user-images.githubusercontent.com/1259628/232239678-ec8e4361-e74d-4e8e-8cfb-35914e2eb009.png)
+
+Another way it to use Task Manager (on the "Details" tab):
+
+![image](https://user-images.githubusercontent.com/1259628/232239927-a292604c-1cdd-47f7-8a37-592397e66b3a.png)
 
 If you save the entire memory space of a program, it would be huge. Luckily and not all the data in memory is required for analysis. For example, we can elide the code itself, because that is already available in the `.exe` and `.dll` files we already have. When we attach the debugger to a minidump, the debugger can fill in the missing code from your local binaries.
 
