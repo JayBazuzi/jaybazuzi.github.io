@@ -5,6 +5,8 @@ title: The Toil Scorecard
 
 Technical debt is hard to measure, but there is a subcategory we *can* measure: activities that consume our human capacity, but could be automated away. When a developer makes a code change to the software system, how long will it take to validate that the change is correct? What about rotating credentials or ensuring that all 3rd-party dependencies are up to date? How do we observe that production is healthy and operating correctly? The Toil Scorecard gives teams a way to measure these costs and make toil visible to the organization.
 
+For each area we give a qualitative score, a quantitative measurement of time spent, and a quantiative measurement of decision-making.
+
 # Grade the automation maturity
 
 | Score | Description                                                                           |
@@ -28,6 +30,14 @@ Aggregate per month. In the Toil Scorecard we don't need to differentiate betwee
 A single digit of precision is plenty. Even order-of-magnitude is good enough, especially at the beginning.
 
 # The Areas
+
+| |
+| - | 
+| **Validate** (test) an arbitrary change |
+| **Release** (ship) to production |
+| **Maintain** the in-production system |
+| Keep up to date with **Dependencies** |
+| **Observe** the health of the system ||
 
 ## Validation
 
