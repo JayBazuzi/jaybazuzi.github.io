@@ -37,7 +37,7 @@ A single digit of precision is plenty. Even order-of-magnitude is good enough, e
 | **Release** (ship) to production |
 | **Maintain** the in-production system |
 | Keep up to date with **Dependencies** |
-| **Observe** the health of the system ||
+| **Observe** the health of the system |
 
 ## Validation
 
