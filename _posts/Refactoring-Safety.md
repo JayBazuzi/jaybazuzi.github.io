@@ -1,6 +1,7 @@
 What does it mean for refactoring to be "safe"? If one approach is more or less safe than another, how can we compare them? How safe is safe enough?
 
 - What is the risk?
+    - Defects (whether caused by refactoring or otherwise) harm our business and our reputation and our morale.
     - Stakeholders overreact to refactoring-introduced defects.
     - Programmers underestimate stakeholder sensitivity to refactoring-introduced defects.
     - As much as we abhor refactoring-introduced defects, the consequences of _not_ refactoring are even greater (but harder to recognize).
