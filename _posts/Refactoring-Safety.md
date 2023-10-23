@@ -11,8 +11,8 @@ What does it mean for refactoring to be "safe"? If one approach is more or less 
     - Hyrum's Law means that you probably have test gaps anyway.
 - Is it automated?
     - Automation probably has flaws.
-    - VC# flaws are fringe.
-    - PyCharm flaws are glaring.
+        - VC# flaws are fringe / scarce.
+        - PyCharm flaws are glaring.
     - Compiled, type-safe languages have a huge advantage.
     - Build system integration (MSBuild, `compile_commands.json`) have a huge advantage.
     - "pretty good" automation can be mitigated.
