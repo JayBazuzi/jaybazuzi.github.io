@@ -18,7 +18,7 @@ or
 assert sys.version_info >= (3, 12)
 ```
 
-This isn't satisfying. If you run with the wrong Python it fails but doesn't help you fix the problem. If you have multiple `.py` files in your context, you'll need to update all of them at once.
+This isn't satisfying. If you run with the wrong Python it fails but doesn't help you fix the problem. If you have multiple `.py` files in your context, you'll need to ensure that they all have this right - I recommend a static analysis check in your build. 
 
 (Side rant: why the heck is `sys.version` a `str` but `sys.version_info` is a tuple? That distinction is too arbitrary.)
 
@@ -37,15 +37,15 @@ path/to/bootstrap_python_and_run.sh ${0%/*}/_${0##*/}.py "$@"
 @call path\to\bootstrap_python_and_run.cmd %~dp0\_%~n0.py %*
 ```
 
-(This scripts are meant to run a same-named-but-`_`-prefixed script in the same directory. They aren't tested and may have a bug. Sorry.)
+(in case that weird syntax is unclear: these scripts are meant to run a same-named-but-`_`-prefixed script in the same directory. They aren't tested and may have a bug. Sorry.)
 
 I'll leave it up to you to figure out how to write `bootstrap_python_and_run` because I have no idea how to do that.
 
 # Virtual Environment
 
-Don't ever* install a package into the installed Python, because that affects all users of that Python in difficult-to-control ways. Only ever install in to a virtual environment.
+Don't ever* install a package into an installed Python, because that affects all users of that Python in difficult-to-control ways. Only ever install in to a virtual environment.
 
-The steps to set up a virtual environment are _just_ complicated enough to be annoying:
+The steps to set up and use a virtual environment are _just_ complicated enough to be annoying:
 
 ```Bash
 #!/bin/bash
@@ -65,11 +65,11 @@ call python -m pip install ... || goto :EOF
 
 (Details of `pip install` can be found below...)
 
-Batch files are _incredibly_ difficult to get right, especially around error handling. It can be super subtle, so if you think you got it right, I'm here to tell you that it's probably wrong. So I'm always looking for a way to write less Batch. Bash and PowerShell are better but still hazardous.
+Batch files are _incredibly_ difficult to get right, especially around error handling. It can be super subtle, so if you think you got it right, I'm here to tell you that it's probably wrong. I can probably get a single-line script right but more than that and I start to get uncomfortable. So I'm always looking for a way to write less Batch. (Bash and PowerShell are better but still hazardous.)
 
 I don't like the redundancy of maintaining both Bash and Batch implementations of this process. It's rare to find a team that is highly skilled at both, which just invites more subtle bugs.
 
-Also, destroying the venv when it is out of date or corrupted is more headache but is missing from my above script snippets. Adding that makes it more complicated, right where I really don't want complexity.
+Also, destroying the venv when it is out of date or corrupted is more necessary capability but is missing from my above script snippets.
 
 ## Tox and Nox
 
