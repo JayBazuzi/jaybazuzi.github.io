@@ -3,7 +3,7 @@ layout: post
 title: The Toil Scorecard
 ---
 
-Technical debt is hard to measure, but there is a subcategory we *can* measure: activities that consume our human capacity, but could be automated away. When a developer makes a code change to the software system, how long will it take to validate that the change is correct? What about rotating credentials or ensuring that all 3rd-party dependencies are up to date? How do we observe that production is healthy and operating correctly? The Toil Scorecard gives teams a way to measure these costs and make toil visible to the organization.
+"Toil" is the work that takes time and energy human capacity but could be largely automated. "Technical Debt" is generally hard to measure, but Toil is measurable. It includes activities such as validating a code change, rotating credentials, and updating 3rd-party dependencies. The Toil Scorecard gives teams a way to measure these costs and make toil visible to the organization.
 
 For each area we give a qualitative score, a quantitative measurement of time spent, and a quantiative measurement of decision-making.
 
@@ -53,7 +53,7 @@ Test that an *arbitrary* code change works correctly and does not break existing
 | D     | The dev who wrote the Payments module knows how to test it and watches for PRs that touch that area.                |
 | F     | We don't know that the Payments module requires special treatment, because the dev who wrote Payments has moved on. |
 
-If you have dedicated testers, include their activity in this assessment.
+If you have specialized testers, sysops, devops, contractors, include their activity in this assessment.
 
 ## Release
 
