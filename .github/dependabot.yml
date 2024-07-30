@@ -4,8 +4,131 @@
 # https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
 version: 2
+
 updates:
-  - package-ecosystem: "" # See documentation for possible values
-    directory: "/" # Location of package manifests
-    schedule:
-      interval: "daily"
+
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  commit-message:
+    prefix: "- r "
+
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+  commit-message:
+    prefix: "- r "
+
+- package-ecosystem: composer
+  directory: "/"
+  schedule:
+    interval: daily
+  commit-message:
+    prefix: "- r "
+
+- package-ecosystem: devcontainers
+  directory: "/"
+  schedule:
+    interval: daily
+  commit-message:
+    prefix: "- r "
+
+- package-ecosystem: maven
+  directory: "/"
+  schedule:
+    interval: daily
+  commit-message:
+    prefix: "- r "
+
+- package-ecosystem: mix
+  directory: "/"
+  schedule:
+    interval: daily
+  commit-message:
+    prefix: "- r "
+
+- package-ecosystem: cargo
+  directory: "/"
+  schedule:
+    interval: daily
+  commit-message:
+    prefix: "- r "
+
+- package-ecosystem: gradle
+  directory: "/"
+  schedule:
+    interval: daily
+  commit-message:
+    prefix: "- r "
+
+- package-ecosystem: nuget
+  directory: "/"
+  schedule:
+    interval: daily
+  commit-message:
+    prefix: "- r "
+
+- package-ecosystem: gomod
+  directory: "/"
+  schedule:
+    interval: daily
+  commit-message:
+    prefix: "- r "
+
+- package-ecosystem: docker
+  directory: "/"
+  schedule:
+    interval: daily
+  commit-message:
+    prefix: "- r "
+
+- package-ecosystem: elm
+  directory: "/"
+  schedule:
+    interval: daily
+  commit-message:
+    prefix: "- r "
+
+- package-ecosystem: gitsubmodule
+  directory: "/"
+  schedule:
+    interval: daily
+  commit-message:
+    prefix: "- r "
+
+- package-ecosystem: github-actions
+  directory: "/"
+  schedule:
+    interval: daily
+  commit-message:
+    prefix: ". e "
+
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: daily
+  commit-message:
+    prefix: "- r "
+
+- package-ecosystem: terraform
+  directory: "/"
+  schedule:
+    interval: daily
+  commit-message:
+    prefix: "- r "
+
+- package-ecosystem: pub
+  directory: "/"
+  schedule:
+    interval: daily
+  commit-message:
+    prefix: "- r "
+
+- package-ecosystem: swift
+  directory: "/"
+  schedule:
+    interval: daily
+  commit-message:
+    prefix: "- r "
