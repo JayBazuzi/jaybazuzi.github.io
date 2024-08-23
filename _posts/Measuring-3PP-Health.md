@@ -33,4 +33,7 @@ That is also appropriate: an unmaintained dependency is a business risk for us.
 
 ## Other measures
 
-This list is weakly ordered: you probably need to do pretty well at one before moving to the next one, but 
+This list is in rough priority order - start at the top, but you need not hit 100% success in each one before you move to the next one.
+
+1. We know every direct dependency.
+1. 
