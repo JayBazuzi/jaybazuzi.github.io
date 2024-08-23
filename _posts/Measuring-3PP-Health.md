@@ -36,4 +36,11 @@ That is also appropriate: an unmaintained dependency is a business risk for us.
 This list is in rough priority order - start at the top, but you need not hit 100% success in each one before you move to the next one.
 
 1. We know every direct dependency.
-1. 
+1. Every direct dependency is on an actively-supported version.
+1. We know all our direct and transitive dependencies, and their exact versions.
+1. We know if any of those dependencies contain a disclosed security vulnerability.
+1. We know if there are available updates for any dependency.
+1. We know we are on the latest patch (latest minor (latest major)).
+1. We know the process for updating each 3PP
+1. Producing a report of the above is fully automated
+
