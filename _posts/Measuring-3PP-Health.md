@@ -11,9 +11,9 @@ While generally highly benefical, these can become a source of technical risk an
 Furthermore, 3PP age is a pretty decent first-approximation of the technical health of the software system and the organziation that maintains it:
 organizations that are able to stay on top of their 3PP are able to maintain high quality in their work, ship frequently, and respond to promptly to shifting conditions.
 
-# 3PP age
+# A single measure: 3PP age
 
-The first 3PP health metric is "3PP age, in days". For each 3PP we depend on, how long ago was it released?
+The first 3PP health measure is "3PP age, in days". For each 3PP we depend on, how long ago was it released?
 Aggregate this by adding all the values of all the 3PP we depend on.
 
 One organization I know tracks this in a spreadsheet, like:
