@@ -5,26 +5,27 @@ title: Measuring 3PP Health
 
 If a critcial security vulnerability is found in a library we depend on, how quickly can we find out, apply the fix, verify, and ship to production?
 
-Pretty much every software project today depends on a myriad of 3rd-party libraries and programs.
+Pretty much every software project today depends on a myriad of 3rd-party libraries and programs ("3PP").
 While generally highly benefical, these can become a source of technical risk and threat to the health of the business if not managed well.
 
-Furthermore, 3PP age is a pretty decent first-approximation of the technical health of the software system and the organziation that maintains it:
+I propose **total 3PP age** as a pretty decent first approximation of the technical health of the software system and the organziation that maintains it:
 organizations that are able to stay on top of their 3PP are able to maintain high quality in their work, ship frequently, and respond to promptly to shifting conditions.
 
-# A single measure: 3PP age
+# A Single Measure: Total 3PP Age
 
-The first 3PP health measure is "3PP age, in days". For each 3PP we depend on, how long ago was it released?
-Aggregate this by adding all the values of all the 3PP we depend on.
+For each 3PP we depend on, how long ago was it released?
+Count days.
+Aggregate by sum across all 3PP we depend on.
 
 One organization I know tracks this in a spreadsheet, like:
 
-| 3PP Name | Version | Age (days) |
-| - | - | - |
-| npm | 10.0.0 | `TODAY() - DATE("Aug 31, 2023")` |
-| lodash | 4.0.0 | `TODAY() - DATE("Jan 12, 2016")` |
-| TOTAL | | `SUM(C)` |
+| 3PP Name | Version | Age (days)                       |
+|----------|---------|----------------------------------|
+| npm      | 10.0.0  | `TODAY() - DATE("Aug 31, 2023")` |
+| lodash   | 4.0.0   | `TODAY() - DATE("Jan 12, 2016")` |
+| TOTAL    |         | `SUM(C)`                         |
 
-The nice thing about this measure is that it's easy to understand and explain.
+The nice thing about this measure is that it's easy to understand and explain, even to people who aren't programmers.
 Because we measure in a small unit (days) it looks quite large, which is appropriate.
 "Our 3PP is 1.4 gajillion days out of date, and that is a business risk that we should address."
 
@@ -33,6 +34,7 @@ That is also appropriate: an unmaintained dependency is a business risk for us.
 
 ## Other measures
 
+For a more technical audience that wants to more closely assess 3PP health, here is a checklist. 
 This list is in rough priority order - start at the top, but you need not hit 100% success in each one before you move to the next one.
 
 1. We know every direct dependency.
@@ -41,6 +43,5 @@ This list is in rough priority order - start at the top, but you need not hit 10
 1. We know if any of those dependencies contain a disclosed security vulnerability.
 1. We know if there are available updates for any dependency.
 1. We know we are on the latest patch (latest minor (latest major)).
-1. We know the process for updating each 3PP
-1. Producing a report of the above is fully automated
-
+1. We know our process for updating each 3PP
+1. Producing a report of all the above is fully automated
