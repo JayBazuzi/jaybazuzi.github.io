@@ -32,7 +32,7 @@ Because we measure in a small unit (days) it looks quite large, which is appropr
 Note that if a 3PP we depend on is not updated for a long time, this measure will get worse even if we are consistently on the latest version.
 That is also appropriate: an unmaintained dependency is a business risk for us.
 
-## Other measures
+# Other measures
 
 For a more technical audience that wants to more closely assess 3PP health, here is a checklist. 
 This list is in rough priority order - start at the top, but you need not hit 100% success in each one before you move to the next one.
