@@ -1,9 +1,7 @@
 ---
 layout: post
-title: The one true .gitattributes
+title: The one true `.gitattributes`
 ---
-
-# The One True `.gitattributes`
 
 I take it as a fundamental tenet of source control systems that I can put a file in now and get it out later, unchanged. Git breaks this rule: Git can convert line endings, which which regularly causes confusion and file corruption. Let's stop that from happening.
 
