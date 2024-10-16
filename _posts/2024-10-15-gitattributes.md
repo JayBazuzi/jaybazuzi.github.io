@@ -27,11 +27,7 @@ this means:
 - no files are eligble for line-ending conversion
 - show diffs
 
-In my opinion, `git init` should create this `.gitattributes` file, avoiding a lot of confusion and file corruption. For now, you have to do it yourself. You can automate it locally by placing such a file in a "Git template" directory and configuring Git like this:
-
-```
-git config --global init.templateDir '~/.git-template'
-```
+In my opinion, `git init` should create this `.gitattributes` file, avoiding a lot of confusion and file corruption. Until the maintainers of Git accept this suggestion, you have to do it yourself.
 
 Also, you may want to disable diffs for any binary files you add by appending something like:
 
