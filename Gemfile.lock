@@ -15,7 +15,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rexml (3.3.9)
-    webrick (1.9.0)
+    webrick (1.9.1)
 
 PLATFORMS
   arm64-darwin-22
