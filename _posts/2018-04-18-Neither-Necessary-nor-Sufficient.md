@@ -28,7 +28,7 @@ Have you noticed how programmers learn APIs? We're pragmatic. We give documentat
 
 You, the author of the API, have written great tests and you feel confident that you can refactor safely. You clean up gunk. You eliminate duplication. You implement a design pattern you learned. Each step of the way you run your comprehensive unit test suite, and confidently check in under a green bar.
 
-In that duplicate code there was a bug. 9 out of 10 instances had been updated at some point, but the 10th got missed. Blame [Shalloway](http://www.netobjectives.com/blogs/shalloways-law-and-shalloways-principle). There's a bug in there that you didn't know about, and when you DRY'd out the code you eliminated the bug, and reduced the likelihood of introducing future bugs when this needs to be edited again. That is awesome!
+In that duplicate code there was a bug. 9 out of 10 instances had been updated at some point, but the 10th got missed. Blame [Shalloway](https://web.archive.org/web/20211021110842/https://www.netobjectives.com/blogs/shalloways-law-and-shalloways-principle). There's a bug in there that you didn't know about, and when you DRY'd out the code you eliminated the bug, and reduced the likelihood of introducing future bugs when this needs to be edited again. That is awesome!
 
 Unfortunately, a customer has a program that depends on that bug, and they've built their whole business around that program, and deployed to many computers and you've broken them. Their business is harmed. The reputation of your software is harmed, as is your reputation as a programmer. People start frowning every time you say you're refactoring. They don't want that hassle again.
 

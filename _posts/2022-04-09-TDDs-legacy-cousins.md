@@ -102,4 +102,4 @@ Just about any refactoring can make gnarly code more testable, but a few approac
 - Carving out good modules that a team can own and maintain independently.
 With clean module and ownership boundaries, a team can be more aggressive about cleaning up code within those boundaries, and will reap the rewards of their investment.
 - [Refactor for extensibility](https://jay.bazuzi.com/LOSOCS/) then add your new feature in a new module, where you are free to use TDD.
-- Many of the refactorings in [Deep Roots' Legacy Code Book](http://learn.digdeeproots.com/cookbook/), especially [Enable Unit Testing](https://learn.digdeeproots.com/cookbook/enable-unit-tests/).
+- Many of the refactorings in [Deep Roots' Legacy Code Book](https://web.archive.org/web/20220518094516/https://learn.digdeeproots.com/cookbook/), especially [Enable Unit Testing](https://web.archive.org/web/20220518092812/https://learn.digdeeproots.com/cookbook/enable-unit-tests/).
